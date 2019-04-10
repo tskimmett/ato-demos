@@ -1,0 +1,13 @@
+<view columns="24">
+    <field source="Timestamp" colspan="12" uuid="1" />
+    <field source="Name" colspan="24" uuid="2" />
+    <field source="Address" colspan="24" uuid="3" />
+    <field source="Email" colspan="12" uuid="4" />
+    <field source="Phone" column="13" colspan="12" uuid="5" />
+    <field source="Willyoubeattending" colspan="12" uuid="6" />
+    <field source="NumberofGuests" colspan="12" uuid="7" />
+    <field source="WhatDay" colspan="12" uuid="8" />
+    <field source="WhatTime" column="13" colspan="12" uuid="9" />
+    <content isvisible="true" colspan="12" uuid="10">&lt;p&gt; [Address] &lt;/p&gt;</content>
+    <pagebreak colspan="24" uuid="11" nextbuttontext="Submit" confirmationmessage="" redirecturl="" issubmission="true" showbackbutton="false" pagenumber="1" includedocumentlinks="true" includeddocuments="1" includeentrydetails="true" pagetitle="Page 1" />
+</view>

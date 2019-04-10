@@ -1,0 +1,9 @@
+<div sys:attach='dataview' dataview:data='{@ NumberInteger}'>
+	<div class='c-label'>
+		<label sys:for='{{ $id("c-20-")}}'>Number - Integer</label>
+	</div>
+	<div class='c-editor'>
+		<input sys:id='c-20-' placeholder='' type='text' sys:value='{ binding displayValue }' />
+	</div>
+	<div class='c-validation'>{ binding firstError.message }</div>
+</div>

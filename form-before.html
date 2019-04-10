@@ -1,0 +1,1053 @@
+<form>
+	<div class='c-forms-form' tabindex='0'>
+		<div class='c-editor' style='display:none;'>
+			<input type='text' class='c-forms-form-style' />
+		</div>
+		<div class='c-forms-form-body'>
+			<div class='c-forms-heading'>
+				<div class='c-forms-logo'><img style='max-width: 100%;'
+						src='https://services.cognito.test/file/fZYM3wbJfPLbLiT0Pv6C7bK6cnnb-FNdiTMIzgHaEbXDj9LwDJMsoFE2paMIsiVV' />
+				</div>
+				<div class='c-forms-form-title'>
+					<h2>Vue - Phase 1</h2>
+					<div class='c-forms-description'>This form tests the capabilities of Phase 1 of the Vue Form
+						redevelopment project.</div>
+				</div>
+			</div>
+			<div class='c-forms-form-main c-span-24 c-sml-span-12'>
+				<div class='c-progress-section sys-template' sys:attach='dataview'
+					dataview:data='{binding entry, source={{ Cognito.Forms.model }} }'>
+					<div class='sys-template c-forms-progress c-progress-steps' sys:attach='dataview'
+						dataview:data='{@ currentPage}'>
+						<ol class='sys-template' sys:attach='dataview' dataview:data='{ binding options }'>
+							<li sys:class="{{ $dataItem.get_selected() ? 'c-page-selected' : '' }}"
+								sys:data-page="{{ $dataItem.get_rawValue().get_number() }}"><span>{ binding
+									displayValue, mode=oneTime }</span></li>
+						</ol>
+					</div>
+				</div>
+				<div class='c-forms-pages'>
+					<div class='c-page-page1'>
+						<div class='c-forms-template sys-template' sys:attach='dataview'
+							dataview:data='{binding entry, source={{ Cognito.Forms.model }} }'>
+							<div class='sys-template c-page' sys:attach='toggle' toggle:on='{binding page1.render}'
+								toggle:action='render'><span class='c-visible-container' sys:attach='toggle'
+									toggle:onshowing='{{ Cognito.toggleAnimationShow }}'
+									toggle:onhiding='{{ Cognito.toggleAnimationHide }}' toggle:on='{binding isVisible0}'
+									toggle:action='show'>
+									<div class='c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12'>
+										<div class='c-editor c-html'
+											sys:innerHtml='{binding contentFormat1, convert=Cognito.formatText}'></div>
+									</div>
+								</span><span sys:if="{{ Cognito.config.mode === 'admin' }}">
+									<div class='c-text-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template'
+										sys:attach='dataview' dataview:data='{@ WhatIsVue}'>
+										<div class='c-label  '><label sys:for='{{ $id("c-2-")}}'>What is Vue?</label>
+										</div>
+										<div class='c-editor'><input sys:id='c-2-' placeholder='' type='text'
+												sys:value='{ binding displayValue }' /></div>
+										<div class='c-validation'>{ binding firstError.message }</div>
+									</div>
+								</span>
+								<div class='c-yesno-checkbox c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template'
+									sys:attach='dataview' dataview:data='{@ RateYourSatisfaction}'>
+									<div class='c-editor c-yesno-checkbox'>
+										<label sys:for='{{ $id("c-3-")}}'>
+											<input sys:id='c-3-' type='checkbox' sys:checked='{ binding rawValue }' />
+											<span>Rate your satisfaction?</span>
+										</label>
+									</div>
+									<div class='c-validation'>{ binding firstError.message }</div>
+								</div>
+								<span class='c-visible-container' sys:attach='toggle'
+									toggle:onshowing='{{ Cognito.toggleAnimationShow }}'
+									toggle:onhiding='{{ Cognito.toggleAnimationHide }}'
+									toggle:on='{binding RateYourSatisfactionWithVue_IsVisible}' toggle:action='show'>
+									<div class='c-rating-scale c-field c-col-1 c-sml-col-1 c-span-24 c-sml-span-12 sys-template'
+										sys:class-c-required='{binding RateYourSatisfactionWithVue_IsRequired}'
+										sys:attach='dataview' dataview:data='{@ RateYourSatisfactionWithVue}'>
+										<legend class='c-label '>Rate your satisfaction with Vue</legend>
+										<div class='c-rating-scale-questions'>
+											<table>
+												<thead>
+													<tr>
+														<th></th>
+														<th class='c-choice-option-header'>Very Unsatisfied</th>
+														<th class='c-choice-option-header'>Unsatisfied</th>
+														<th class='c-choice-option-header'>Neutral</th>
+														<th class='c-choice-option-header'>Satisfied</th>
+														<th class='c-choice-option-header'>Very Satisfied</th>
+														<th class='c-choice-option-header'>N/A</th>
+													</tr>
+												</thead>
+												<tbody class='sys-template' sys:attach='dataview'
+													dataview:data='{@ EaseOfUse}'>
+													<tr class='sys-template' sys:attach='dataview'
+														dataview:data='{ binding options, mode=oneTime }'>
+														<th scope='row' class='c-choice-question'
+															sys:if='{{ $index == 0 }}'>
+															{{ $context.parentContext.dataItem.get_label() }}</th>
+														<td class='c-choice-option'><label
+																sys:for='{{ $id("c-4-")}}'><input sys:id='c-4-'
+																	type='radio'
+																	sys:name="{{ $context.parentContext.getInstanceId('group') }}"
+																	sys:checked='{ binding selected }' /><span><span
+																		class='c-offscreen'>{ binding displayValue,
+																		mode=oneTime }</span></span>
+															</label>
+														</td>
+													</tr>
+													<tr>
+														<td class='c-validation-row' colspan='7'>
+															<div class='c-validation'>{ binding firstError.message }
+															</div>
+														</td>
+													</tr>
+												</tbody>
+												<tbody class='sys-template' sys:attach='dataview'
+													dataview:data='{@ Documentation}'>
+													<tr class='sys-template' sys:attach='dataview'
+														dataview:data='{ binding options, mode=oneTime }'>
+														<th scope='row' class='c-choice-question'
+															sys:if='{{ $index == 0 }}'>
+															{{ $context.parentContext.dataItem.get_label() }}</th>
+														<td class='c-choice-option'>
+															<label sys:for='{{ $id("c-5-")}}'>
+																<input sys:id='c-5-' type='radio'
+																	sys:name="{{ $context.parentContext.getInstanceId('group') }}"
+																	sys:checked='{ binding selected }' /><span><span
+																		class='c-offscreen'>{ binding displayValue,
+																		mode=oneTime }</span></span>
+															</label>
+														</td>
+													</tr>
+													<tr>
+														<td class='c-validation-row' colspan='7'>
+															<div class='c-validation'>{ binding firstError.message }
+															</div>
+														</td>
+													</tr>
+												</tbody>
+												<tbody class='sys-template' sys:attach='dataview'
+													dataview:data='{@ Ecosystem}'>
+													<tr class='sys-template' sys:attach='dataview'
+														dataview:data='{ binding options, mode=oneTime }'>
+														<th scope='row' class='c-choice-question'
+															sys:if='{{ $index == 0 }}'>
+															{{ $context.parentContext.dataItem.get_label() }}</th>
+														<td class='c-choice-option'>
+															<label sys:for='{{ $id("c-6-")}}'>
+																<input sys:id='c-6-' type='radio'
+																	sys:name="{{ $context.parentContext.getInstanceId('group') }}"
+																	sys:checked='{ binding selected }' /><span><span
+																		class='c-offscreen'>{ binding displayValue,
+																		mode=oneTime }</span></span>
+															</label>
+														</td>
+													</tr>
+													<tr>
+														<td class='c-validation-row' colspan='7'>
+															<div class='c-validation'>{ binding firstError.message }
+															</div>
+														</td>
+													</tr>
+												</tbody>
+												<tbody class='sys-template' sys:attach='dataview'
+													dataview:data='{@ Performance}'>
+													<tr class='sys-template' sys:attach='dataview'
+														dataview:data='{ binding options, mode=oneTime }'>
+														<th scope='row' class='c-choice-question'
+															sys:if='{{ $index == 0 }}'>
+															{{ $context.parentContext.dataItem.get_label() }}</th>
+														<td class='c-choice-option'>
+															<label sys:for='{{ $id("c-7-")}}'>
+																<input sys:id='c-7-' type='radio'
+																	sys:name="{{ $context.parentContext.getInstanceId('group') }}"
+																	sys:checked='{ binding selected }' /><span><span
+																		class='c-offscreen'>{ binding displayValue,
+																		mode=oneTime }</span></span>
+															</label>
+														</td>
+													</tr>
+													<tr>
+														<td class='c-validation-row' colspan='7'>
+															<div class='c-validation'>{ binding firstError.message }
+															</div>
+														</td>
+													</tr>
+												</tbody>
+												<tbody class='sys-template' sys:attach='dataview'
+													dataview:data='{@ Flexibility}'>
+													<tr class='sys-template' sys:attach='dataview'
+														dataview:data='{ binding options, mode=oneTime }'>
+														<th scope='row' class='c-choice-question'
+															sys:if='{{ $index == 0 }}'>
+															{{ $context.parentContext.dataItem.get_label() }}</th>
+														<td class='c-choice-option'>
+															<label sys:for='{{ $id("c-8-")}}'>
+																<input sys:id='c-8-' type='radio'
+																	sys:name="{{ $context.parentContext.getInstanceId('group') }}"
+																	sys:checked='{ binding selected }' /><span><span
+																		class='c-offscreen'>{ binding displayValue,
+																		mode=oneTime }</span></span>
+															</label>
+														</td>
+													</tr>
+													<tr>
+														<td class='c-validation-row' colspan='7'>
+															<div class='c-validation'>{ binding firstError.message }
+															</div>
+														</td>
+													</tr>
+												</tbody>
+												<tbody class='sys-template' sys:attach='dataview'
+													dataview:data='{@ Testability}'>
+													<tr class='sys-template' sys:attach='dataview'
+														dataview:data='{ binding options, mode=oneTime }'>
+														<th scope='row' class='c-choice-question'
+															sys:if='{{ $index == 0 }}'>
+															{{ $context.parentContext.dataItem.get_label() }}</th>
+														<td class='c-choice-option'>
+															<label sys:for='{{ $id("c-9-")}}'>
+																<input sys:id='c-9-' type='radio'
+																	sys:name="{{ $context.parentContext.getInstanceId('group') }}"
+																	sys:checked='{ binding selected }' /><span><span
+																		class='c-offscreen'>{ binding displayValue,
+																		mode=oneTime }</span></span>
+															</label>
+														</td>
+													</tr>
+													<tr>
+														<td class='c-validation-row' colspan='7'>
+															<div class='c-validation'>{ binding firstError.message }
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div class='c-validation'>{ binding firstError.message }</div>
+									</div>
+								</span>
+								<div class='c-yesno-checkbox c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template'
+									sys:attach='dataview' dataview:data='{@ ShowTextFields}'>
+									<div class='c-editor c-yesno-checkbox'>
+										<label sys:for='{{ $id("c-11-")}}'>
+											<input sys:id='c-11-' type='checkbox'
+												sys:checked='{ binding rawValue }' /><span>Show text
+												fields?</span></label>
+									</div>
+									<div class='c-validation'>{ binding firstError.message }</div>
+								</div><span class='c-visible-container' sys:attach='toggle'
+									toggle:onshowing='{{ Cognito.toggleAnimationShow }}'
+									toggle:onhiding='{{ Cognito.toggleAnimationHide }}'
+									toggle:on='{binding Textbox2_IsVisible}' toggle:action='show'>
+									<div class='c-section c-col-1 c-sml-col-1 c-span-24 c-sml-span-12'>
+										<div class='c-title'>
+											<h3>Textbox</h3>
+										</div>
+										<div class='c-helptext'>Demonstrates all usages of the Textbox field type.
+											[Textbox]</div>
+										<div class='sys-template' sys:attach='dataview' dataview:data='{~ Textbox2}'>
+											<div class='c-text-singleline c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template'
+												sys:attach='dataview' dataview:data='{@ Textbox}'>
+												<div class='c-label  '><label
+														sys:for='{{ $id("c-12-")}}'>Textbox</label></div>
+												<div class='c-editor'><input sys:id='c-12-' placeholder=''
+														maxlength='10' type='text'
+														sys:value='{ binding displayValue }' /></div>
+												<div class='c-validation'>{ binding firstError.message }</div>
+												<div class='c-helptext'>Min:5, Max:10</div>
+											</div>
+											<div class='c-text-singleline c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template'
+												sys:attach='dataview' dataview:data='{@ TextboxWithSSNMask}'>
+												<div class='c-label  '><label sys:for='{{ $id("c-13-")}}'>Textbox With
+														SSN Mask</label></div>
+												<div class='c-editor'><input sys:id='c-13-' placeholder='' type='text'
+														sys:value='{ binding displayValue }' /></div>
+												<div class='c-validation'>{ binding firstError.message }</div>
+												<div class='c-helptext'>###-##-#### [TextboxWithSSNMask]</div>
+											</div>
+											<div class='c-text-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template'
+												sys:attach='dataview' dataview:data='{@ TextboxWithLicensePlateMask}'>
+												<div class='c-label  '><label sys:for='{{ $id("c-14-")}}'>Textbox With
+														License Plate Mask</label></div>
+												<div class='c-editor'><input sys:id='c-14-' placeholder='' type='text'
+														sys:value='{ binding displayValue }' /></div>
+												<div class='c-validation'>{ binding firstError.message }</div>
+												<div class='c-helptext'>###-@@@</div>
+											</div>
+											<div class='c-text-multiplelines c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template'
+												sys:attach='dataview' dataview:data='{@ TextboxMultipleLines}'>
+												<div class='c-label  '><label sys:for='{{ $id("c-15-")}}'>Textbox
+														Multiple Lines</label></div>
+												<div class='c-editor'><textarea sys:id='c-15-' placeholder=''
+														maxlength='10' type='text' height
+														sys:value='{ binding displayValue }'></textarea></div>
+												<div class='c-validation'>{ binding firstError.message }</div>
+												<div class='c-helptext'>Min:5, Max:10</div>
+											</div>
+											<div class='c-text-multiplelines c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template'
+												sys:attach='dataview'
+												dataview:data='{@ TextboxMultipleLinesWithPlaceholder}'>
+												<div class='c-label  '><label sys:for='{{ $id("c-16-")}}'>Textbox
+														Multiple Lines With Placeholder</label></div>
+												<div class='c-editor'><textarea sys:id='c-16-' placeholder='Placeholder'
+														type='text' height
+														sys:value='{ binding displayValue }'></textarea></div>
+												<div class='c-validation'>{ binding firstError.message }</div>
+												<div class='c-helptext'>Min:=5, Max:=10</div>
+											</div>
+											<div class='c-text-password c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template'
+												sys:attach='dataview' dataview:data='{@ TextboxPassword}'>
+												<div class='c-label  '><label sys:for='{{ $id("c-17-")}}'>Textbox
+														Password</label></div>
+												<div class='c-editor c-password'><input sys:id='c-17-' type='password'
+														placeholder='' maxlength='10'
+														sys:value='{ binding displayValue }' /></div>
+												<div class='c-validation'>{ binding firstError.message }</div>
+												<div class='c-helptext'>Min:5, Max:10</div>
+											</div>
+											<div class='c-text-password c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template'
+												sys:attach='dataview'
+												dataview:data='{@ TextboxPasswordWithPlaceholder}'>
+												<div class='c-label  '><label sys:for='{{ $id("c-18-")}}'>Textbox
+														Password With Placeholder</label></div>
+												<div class='c-editor c-password'><input sys:id='c-18-' type='password'
+														placeholder='Placeholder'
+														sys:value='{ binding displayValue }' /></div>
+												<div class='c-validation'>{ binding firstError.message }</div>
+												<div class='c-helptext'>Min:=5, Max:=10</div>
+											</div>
+											<div class='c-text-singleline c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template'
+												sys:attach='dataview' dataview:data='{@ FieldBelowSectionWithoutLabel}'>
+												<div class='c-label  '><label sys:for='{{ $id("c-19-")}}'>Field Below
+														Section Without Label</label></div>
+												<div class='c-editor'><input sys:id='c-19-' placeholder='' type='text'
+														sys:value='{ binding displayValue }' /></div>
+												<div class='c-validation'>{ binding firstError.message }</div>
+											</div>
+										</div>
+										<div class='c-validation sys-template' sys:attach='dataview'
+											dataview:data='{@ Textbox2}'>{ binding firstError.message }</div>
+									</div>
+								</span>
+								<div class='c-number-integer c-field c-col-1 c-sml-col-1 c-span-6 c-sml-span-6 sys-template'
+									sys:attach='dataview' dataview:data='{@ NumberInteger}'>
+									<div class='c-label  '>
+										<label sys:for='{{ $id("c-20-")}}'>Number - Integer</label>
+									</div>
+									<div class='c-editor'>
+										<input sys:id='c-20-' placeholder='' type='text'
+											sys:value='{ binding displayValue }' />
+									</div>
+									<div class='c-validation'>{ binding firstError.message }</div>
+								</div>
+								<div class='c-number-decimal c-field c-col-7 c-sml-col-7 c-span-6 c-sml-span-6 sys-template'
+									sys:attach='dataview' dataview:data='{@ NumberDecimal0}'>
+									<div class='c-label  '>
+										<label sys:for='{{ $id("c-21-")}}'>Number - Decimal(0)</label>
+									</div>
+									<div class='c-editor'>
+										<input sys:id='c-21-' placeholder='' type='text'
+											sys:value='{ binding displayValue }' />
+									</div>
+									<div class='c-validation'>{ binding firstError.message }</div>
+									<div class='c-helptext'>range 5 to 10, default value 8</div>
+								</div>
+								<div class='c-number-decimal c-field c-col-13 c-sml-col-1 c-span-6 c-sml-span-6 sys-template'
+									sys:attach='dataview' dataview:data='{@ NumberDecimal2}'>
+									<div class='c-label  '>
+										<label sys:for='{{ $id("c-22-")}}'>Number - Decimal(2)</label>
+									</div>
+									<div class='c-editor'>
+										<input sys:id='c-22-' placeholder='' type='text'
+											sys:value='{ binding displayValue }' />
+									</div>
+									<div class='c-validation'>{ binding firstError.message }</div>
+								</div>
+								<div class='c-number-percent c-field c-col-19 c-sml-col-7 c-span-6 c-sml-span-6 sys-template'
+									sys:attach='dataview' dataview:data='{@ NumberPercent}'>
+									<div class='c-label  '>
+										<label sys:for='{{ $id("c-23-")}}'>Number - Percent</label>
+									</div>
+									<div class='c-editor'>
+										<input sys:id='c-23-' placeholder='' type='text'
+											sys:value='{ binding displayValue }' />
+									</div>
+									<div class='c-validation'>{ binding firstError.message }</div>
+									<div class='c-helptext'>default value 12%</div>
+								</div>
+								<div class='c-currency c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template'
+									sys:attach='dataview' dataview:data='{@ Currency}'>
+									<div class='c-label  '>
+										<label sys:for='{{ $id("c-24-")}}'>Currency</label>
+									</div>
+									<div class='c-editor'>
+										<input sys:id='c-24-' placeholder='' type='text'
+											sys:value='{ binding displayValue }' />
+									</div>
+									<div class='c-validation'>{ binding firstError.message }</div>
+									<div class='c-helptext'>range $50 to $200, default value $99</div>
+								</div>
+								<div class='c-calculation-currency c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template'
+									sys:attach='dataview' dataview:data='{@ Price}'>
+									<div class='c-label  '>
+										<label sys:for='{{ $id("c-25-")}}'>Price</label>
+									</div>
+									<div class='c-editor'>
+										<div class='c-content'
+											sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'>
+										</div>
+									</div>
+									<div class='c-validation'>{ binding firstError.message }</div>
+								</div>
+								<div class='c-phone c-phone-us c-field c-col-1 c-sml-col-1 c-span-8 c-sml-span-12 sys-template c-required'
+									sys:attach='dataview' dataview:data='{@ Phone}'>
+									<div class='c-label c-offscreen '>
+										<label sys:for='{{ $id("c-26-")}}'>Phone</label>
+									</div>
+									<div class='c-editor'>
+										<input sys:id='c-26-' placeholder='Phone' type='text'
+											sys:value='{ binding displayValue }' />
+									</div>
+									<div class='c-validation'>{ binding firstError.message }</div>
+								</div>
+								<div class='c-email c-field c-col-9 c-sml-col-1 c-span-8 c-sml-span-12 sys-template c-required'
+									sys:attach='dataview' dataview:data='{@ Email}'>
+									<div class='c-label c-offscreen '>
+										<label sys:for='{{ $id("c-27-")}}'>Email</label>
+									</div>
+									<div class='c-editor'>
+										<input sys:id='c-27-' placeholder='Email' type='text'
+											sys:value='{ binding displayValue }' />
+									</div>
+									<div class='c-validation'>{ binding firstError.message }</div>
+								</div>
+								<div class='c-website c-field c-col-17 c-sml-col-1 c-span-8 c-sml-span-12 sys-template c-required'
+									sys:attach='dataview' dataview:data='{@ Website}'>
+									<div class='c-label c-offscreen '>
+										<label sys:for='{{ $id("c-28-")}}'>Website</label>
+									</div>
+									<div class='c-editor'>
+										<input sys:id='c-28-' placeholder='Website' type='text'
+											sys:value='{ binding displayValue }' />
+									</div>
+									<div class='c-validation'>{ binding firstError.message }</div>
+								</div>
+								<div class='c-button-section'>
+									<div class='c-action'>
+										<button type='button' class='c-page-nav c-page-next-page c-button'>{# page1_NextButtonText}</button>
+                            </div>
+                        </div>
+                        <div class='c-page-numbering'>{# pageNumbers}</div>
+                    </div>
+                </div>
+            </div>
+            <div class='c-page-page2' style='display:none;'>
+                <div class='c-forms-template sys-template' sys:attach='dataview' dataview:data='{binding entry, source={{ Cognito.Forms.model }} }'>
+                    <div class='sys-template c-page' sys:attach='toggle' toggle:on='{binding page2.render}' toggle:action='render'>
+                        <div class='c-calculation-singleline c-field c-col-1 c-sml-col-1 c-span-8 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ CalculationText}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-29-")}}'>Calculation - Text</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-calculation-yesno c-field c-col-9 c-sml-col-1 c-span-8 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ CalculationYesNo}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-30-")}}'>Calculation - Yes/No</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-calculation-decimal c-field c-col-17 c-sml-col-1 c-span-8 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ CalculationNumber}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-31-")}}'>Calculation - Number</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-calculation-percent c-field c-col-1 c-sml-col-1 c-span-6 c-sml-span-6 sys-template' sys:attach='dataview' dataview:data='{@ CalculationPercent}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-32-")}}'>Calculation - Percent</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-calculation-currency c-field c-col-7 c-sml-col-7 c-span-6 c-sml-span-6 sys-template' sys:attach='dataview' dataview:data='{@ CalculationCurrency}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-33-")}}'>Calculation - Currency</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-calculation-date c-field c-col-13 c-sml-col-1 c-span-6 c-sml-span-6 sys-template' sys:attach='dataview' dataview:data='{@ CalculationDate}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-34-")}}'>Calculation - Date</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-calculation-time c-field c-col-19 c-sml-col-7 c-span-6 c-sml-span-6 sys-template' sys:attach='dataview' dataview:data='{@ CalculationTime}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-35-")}}'>Calculation - Time</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-date-date c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Date}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-36-")}}'>Date</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-editor-date'>
+                                    <input sys:id='c-36-' placeholder='Enter a date...' type='text' sys:class='c-datepicker' sys:value='{ binding displayValue }' />
+                                </div>
+                                <div class='c-editor-date-icon'><i class='icon-calendar'></i></div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-date-time c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Time}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-37-")}}'>Time</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-editor-time bootstrap-timepicker'>
+                                    <input sys:id='c-37-' placeholder='Enter a time...' type='text' sys:class='c-timepicker' sys:value='{ binding displayValue }' />
+                                </div>
+                                <div class='c-editor-time-icon'><i class='icon-time'></i></div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-choice-dropdown c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ChoiceDropDown}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-38-")}}'>Choice - Drop Down</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-dropdown '>
+                                    <select sys:id='c-38-' sys:value='{ binding systemValue }'>
+                                        <option></option>
+                                        <option sys:if='{{ $dataItem.get_systemValue() == "First Choice" }}' selected='selected' value='First Choice'>First Choice</option>
+                                        <option sys:if='{{ $dataItem.get_systemValue() != "First Choice" }}' value='First Choice'>First Choice</option>
+                                        <option sys:if='{{ $dataItem.get_systemValue() == "Second Choice" }}' selected='selected' value='Second Choice'>Second Choice</option>
+                                        <option sys:if='{{ $dataItem.get_systemValue() != "Second Choice" }}' value='Second Choice'>Second Choice</option>
+                                        <option sys:if='{{ $dataItem.get_systemValue() == "Third Choice" }}' selected='selected' value='Third Choice'>Third Choice</option>
+                                        <option sys:if='{{ $dataItem.get_systemValue() != "Third Choice" }}' value='Third Choice'>Third Choice</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-calculation-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ChoiceDropDownSelectedValue}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-39-")}}'>Choice - DropDown (Selected Value)</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-choice-radiobuttons c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ChoiceRadioButtons}'>
+                            <legend class='c-label  '>Choice - Radio Buttons</legend>
+                            <div class='c-editor c-columns-2 sys-template' sys:attach='dataview' dataview:data='{ binding options }'>
+                                <div class='c-choice-option'>
+                                    <label sys:for='{{ $id("c-40-")}}'>
+                                        <input type='radio' sys:id='c-40-' sys:name="{{ $context.parentContext.getInstanceId('group') }}" sys:checked='{ binding selected }' /><span>{ binding displayValue, mode=oneTime }</span></label>
+                                </div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-calculation-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ChoiceRadioButtonsSelectedValue}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-41-")}}'>Choice - Radio Buttons (Selected Value)</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-choice-checkboxes c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ChoiceCheckboxes}'>
+                            <legend class='c-label  '>Choice - Checkboxes</legend>
+                            <div class='c-editor c-columns-2'>
+                                <div class='sys-template c-choice-option' sys:attach='dataview' dataview:data='{{ new ExoWeb.View.OptionAdapter($dataItem, "First Choice") }}'>
+                                    <label sys:for='{{ $id("c-42-")}}'>
+                                        <input sys:id='c-42-' type='checkbox' id='option' sys:name="{{ $context.parentContext.getInstanceId('group') }}" sys:checked='{ binding selected }' /><span>First Choice</span></label>
+                                </div>
+                                <div class='sys-template c-choice-option' sys:attach='dataview' dataview:data='{{ new ExoWeb.View.OptionAdapter($dataItem, "Second Choice") }}'>
+                                    <label sys:for='{{ $id("c-42-")}}'>
+                                        <input sys:id='c-42-' type='checkbox' id='option' sys:name="{{ $context.parentContext.getInstanceId('group') }}" sys:checked='{ binding selected }' /><span>Second Choice</span></label>
+                                </div>
+                                <div class='sys-template c-choice-option' sys:attach='dataview' dataview:data='{{ new ExoWeb.View.OptionAdapter($dataItem, "Third Choice") }}'>
+                                    <label sys:for='{{ $id("c-42-")}}'>
+                                        <input sys:id='c-42-' type='checkbox' id='option' sys:name="{{ $context.parentContext.getInstanceId('group') }}" sys:checked='{ binding selected }' /><span>Third Choice</span></label>
+                                </div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-calculation-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ChoiceCheckboxesSelectedValue}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-43-")}}'>Choice - Checkboxes (Selected Value)</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-yesno-radiobuttons c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ YesNoRadioButtons}'>
+                            <legend class='c-label  '>Yes/No - Radio Buttons</legend>
+                            <div class='sys-template c-editor c-columns-0' sys:attach='dataview' dataview:data='{ binding options, mode=oneTime }'>
+                                <label class='c-yesno-radio' sys:for='{{ $id("c-44-")}}'>
+                                    <input type='radio' sys:id='c-44-' sys:name="{{ $context.parentContext.getInstanceId('group') }}" sys:checked='{ binding selected }' /><span>{ binding displayValue, mode=oneTime }</span></label>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-calculation-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ YesNoRadioButtonsSelectedValue}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-45-")}}'>Yes/No - Radio Buttons (Selected Value)</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-yesno-checkbox c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ YesNoCheckbox}'>
+                            <div class='c-editor c-yesno-checkbox'>
+                                <label sys:for='{{ $id("c-46-")}}'>
+                                    <input sys:id='c-46-' type='checkbox' sys:checked='{ binding rawValue }' /><span>Yes/No - Checkbox</span></label>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-calculation-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ YesNoCheckboxSelectedValue}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-47-")}}'>Yes/No - Checkbox (Selected Value)</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-yesno-toggle c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ YesNoToggle}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-48-")}}'>Yes/No - Toggle</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div data-on-label='Yes' data-off-label='No'>
+                                    <input sys:id='c-48-' type='checkbox' sys:class='c-toggle' sys:checked='{binding rawValue}' />
+                                </div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-calculation-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ YesNoToggleSelectedValue}'>
+                            <div class='c-label  '>
+                                <label sys:for='{{ $id("c-49-")}}'>Yes/No - Toggle (Selected Value)</label>
+                            </div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-button-section'>
+                            <div class='c-action'>
+                                <button type='button' class='c-page-nav c-page-previous-page c-button'>Back</button>
+                                <button type='button' class='c-page-nav c-page-next-page c-button'>{# page2_NextButtonText}</button>
+                            </div>
+                        </div>
+                        <div class='c-page-numbering'>{# pageNumbers}</div>
+                    </div>
+                </div>
+            </div>
+            <div class='c-page-page3' style='display:none;'>
+                <div class='c-forms-template sys-template' sys:attach='dataview' dataview:data='{binding entry, source={{ Cognito.Forms.model }} }'>
+                    <div class='sys-template c-page' sys:attach='toggle' toggle:on='{binding page3.render}' toggle:action='render'>
+                        <div class='c-section c-col-1 c-sml-col-1 c-span-24 c-sml-span-12'>
+                            <div class='c-title'>
+                                <h3>Section</h3></div>
+                            <div class='sys-template' sys:attach='dataview' dataview:data='{~ Section}'>
+                                <div class='c-text-singleline c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ThisIsText}'>
+                                    <div class='c-label  '>
+                                        <label sys:for='{{ $id("c-50-")}}'>This is text</label>
+                                    </div>
+                                    <div class='c-editor'>
+                                        <input sys:id='c-50-' placeholder='' type='text' sys:value='{ binding displayValue }' />
+                                    </div>
+                                    <div class='c-validation'>{ binding firstError.message }</div>
+                                </div>
+                            </div>
+                            <div class='c-validation sys-template' sys:attach='dataview' dataview:data='{@ Section}'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-section c-col-1 c-sml-col-1 c-span-24 c-sml-span-12'>
+                            <div class='c-title c-repeating-section-title'>
+                                <h3>Repeating Section</h3></div>
+                            <div class='c-repeating-section-group sys-template' sys:attach='dataview' dataview:data='{~ RepeatingSection}' dataview:useoptimalupdates='{{ true }}'>
+                                <div class='c-repeating-section-container'>
+                                    <div class='c-repeating-section-item-title'>
+                                        <div class='c-action-col'><a sys:innerhtml="{{ '&lt;svg class=\'remove-icon\' viewBox=\'0 0 12 12\'&gt;&lt;circle cx=\'6\' cy=\'6\' r=\'5\' /&gt;&lt;line x1=\'4\' x2=\'8\' y1=\'4\' y2=\'8\' /&gt;&lt;line x1=\'8\' x2=\'4\' y1=\'4\' y2=\'8\' /&gt;&lt;/svg&gt;' }}" class='c-remove-item' sys:data-index='{binding ItemNumber}' sys:title='{{ Cognito.resources["field-repeatingsection-remove-link-text"] + " " + "Thing" }}' onclick='$parentContextData(this, null, 2).get_RepeatingSection().remove(Cognito.deleteEntity($parentContextData(this)))'><i class='icon-remove-sign'></i></a></div>
+                                        <h4>Thing <span>{binding ItemNumber}</span></h4></div>
+                                    <div class='c-repeating-section-item'>
+                                        <div class='c-text-singleline c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ RepeatingText}'>
+                                            <div class='c-label  '>
+                                                <label sys:for='{{ $id("c-51-")}}'>Repeating Text</label>
+                                            </div>
+                                            <div class='c-editor'>
+                                                <input sys:id='c-51-' placeholder='' type='text' sys:value='{ binding displayValue }' />
+                                            </div>
+                                            <div class='c-validation'>{ binding firstError.message }</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='c-validation sys-template' style='display: block' sys:attach='dataview' dataview:data='{@ RepeatingSection}'>{ binding firstError.message }</div>
+                            <div class='c-repeating-section-add'>
+                                <button type='button' class='c-add-item' sys:title='{{Cognito.resources["field-repeatingsection-add-link-text"]}}' tabindex='0' onclick='$parentContextData(this).get_RepeatingSection().add(new Cognito.Forms.FormEntry.TestOrg.VuePhase1.RepeatingSection(Cognito.getParentInitializer($parentContextData(this))))'>{{ Cognito.resources['field-repeatingsection-add-link-text'] + " " + "Thing" }}</button>
+                            </div>
+                        </div>
+                        <div class='c-yesno-checkbox c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ShowName}'>
+                            <div class='c-editor c-yesno-checkbox'>
+                                <label sys:for='{{ $id("c-52-")}}'>
+                                    <input sys:id='c-52-' type='checkbox' sys:checked='{ binding rawValue }' /><span>Show name?</span></label>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div><span class='c-visible-container' sys:attach='toggle' toggle:onshowing='{{ Cognito.toggleAnimationShow }}' toggle:onhiding='{{ Cognito.toggleAnimationHide }}' toggle:on='{binding Name_IsVisible}' toggle:action='show'><div class='c-name c-field c-col-1 c-sml-col-1 c-span-24 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Name}'><div class='c-label '><label>Name</label></div><div><div class='c-offscreen'><label sys:for='{{ $id("c-53-")}}'>{{ Cognito.resources["name-first"]}}</label></div><div style='width: 44.444444444444444444444444444%; float: left;' class='c-editor c-span-1'><input sys:id='c-53-' type='text' sys:placeholder='{{ Cognito.resources["name-first"]}}' sys:value='{# First}'/></div><div class='c-offscreen'><label sys:for='{{ $id("c-54-")}}'>{{ Cognito.resources["name-middleinitial"]}}</label></div><div style='width: 11.111111111111111111111111111%; float: left;' class='c-editor c-span-1'><input sys:id='c-54-' type='text' sys:placeholder='{{ Cognito.resources["name-middleinitial"]}}' sys:value='{# MiddleInitial}' maxlength='1'/></div><div class='c-offscreen'><label sys:for='{{ $id("c-55-")}}'>{{ Cognito.resources["name-last"]}}</label></div><div style='width: 44.444444444444444444444444444%; float: left;' class='c-editor c-span-1'><input sys:id='c-55-' type='text' sys:placeholder='{{ Cognito.resources["name-last"]}}' sys:value='{# Last}'/></div></div><div class='c-validation'>{ binding firstError.message }</div></div></span>
+                        <div class='c-yesno-radiobuttons c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ShowAddress}'>
+                            <legend class='c-label  '>Show address?</legend>
+                            <div class='sys-template c-editor c-columns-0' sys:attach='dataview' dataview:data='{ binding options, mode=oneTime }'>
+                                <label class='c-yesno-radio' sys:for='{{ $id("c-57-")}}'>
+                                    <input type='radio' sys:id='c-57-' sys:name="{{ $context.parentContext.getInstanceId('group') }}" sys:checked='{ binding selected }' /><span>{ binding displayValue, mode=oneTime }</span></label>
+                            </div>
+                            <div class='c-validation'>{ binding firstError.message }</div>
+                        </div><span class='c-visible-container' sys:attach='toggle' toggle:onshowing='{{ Cognito.toggleAnimationShow }}' toggle:onhiding='{{ Cognito.toggleAnimationHide }}' toggle:on='{binding Address_IsVisible}' toggle:action='show'><div class='c-address c-address-us c-field c-col-1 c-sml-col-1 c-span-24 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Address}'><div class='c-label '><label>Address</label></div><div><div class='c-offscreen'><label sys:for='{{ $id("c-58-")}}'>{{ Cognito.resources["address-line1"] }}</label></div><div style='float: left;' class='c-editor'><input sys:id='c-58-' type='text' sys:placeholder='{{ Cognito.resources["address-line1"] }}' sys:value='{# Line1}' /></div><div class='c-offscreen'><label sys:for='{{ $id("c-59-")}}'>{{ Cognito.resources["address-line2"] }}</label></div><div style='float: left;' class='c-editor'><input sys:id='c-59-' type='text' sys:placeholder='{{ Cognito.resources["address-line2"] }}' sys:value='{# Line2}' /></div><div class='c-offscreen'><label sys:for='{{ $id("c-60-")}}'>{{ Cognito.resources["address-city"] }}</label></div><div style='float: left;' class='c-editor c-partial-line'><input sys:id='c-60-' type='text' sys:placeholder='{{ Cognito.resources["address-city"] }}' sys:value='{# City}' /></div><div class='c-offscreen'><label sys:for='{{ $id("c-61-")}}'>{{ Cognito.resources["address-state"] }}</label></div><div style='float: left;' class='c-editor c-partial-line'><div class='c-dropdown'><select class='c-placeholder-text-styled ' sys:id='c-61-' sys:value='{# State}'><option value=''>{{ Cognito.resources["address-state"] }}</option><option sys:if="{{ $dataItem.get_systemValue() == 'Armed Forces America' }}" selected='selected' value='Armed Forces America'>Armed Forces America</option><option sys:if="{{ $dataItem.get_systemValue() != 'Armed Forces America' }}" value='Armed Forces America'>Armed Forces America</option><option sys:if="{{ $dataItem.get_systemValue() == 'Armed Forces' }}" selected='selected' value='Armed Forces'>Armed Forces</option><option sys:if="{{ $dataItem.get_systemValue() != 'Armed Forces' }}" value='Armed Forces'>Armed Forces</option><option sys:if="{{ $dataItem.get_systemValue() == 'Armed Forces Pacific' }}" selected='selected' value='Armed Forces Pacific'>Armed Forces Pacific</option><option sys:if="{{ $dataItem.get_systemValue() != 'Armed Forces Pacific' }}" value='Armed Forces Pacific'>Armed Forces Pacific</option><option sys:if="{{ $dataItem.get_systemValue() == 'Alabama' }}" selected='selected' value='Alabama'>Alabama</option><option sys:if="{{ $dataItem.get_systemValue() != 'Alabama' }}" value='Alabama'>Alabama</option><option sys:if="{{ $dataItem.get_systemValue() == 'Alaska' }}" selected='selected' value='Alaska'>Alaska</option><option sys:if="{{ $dataItem.get_systemValue() != 'Alaska' }}" value='Alaska'>Alaska</option><option sys:if="{{ $dataItem.get_systemValue() == 'Arizona' }}" selected='selected' value='Arizona'>Arizona</option><option sys:if="{{ $dataItem.get_systemValue() != 'Arizona' }}" value='Arizona'>Arizona</option><option sys:if="{{ $dataItem.get_systemValue() == 'Arkansas' }}" selected='selected' value='Arkansas'>Arkansas</option><option sys:if="{{ $dataItem.get_systemValue() != 'Arkansas' }}" value='Arkansas'>Arkansas</option><option sys:if="{{ $dataItem.get_systemValue() == 'California' }}" selected='selected' value='California'>California</option><option sys:if="{{ $dataItem.get_systemValue() != 'California' }}" value='California'>California</option><option sys:if="{{ $dataItem.get_systemValue() == 'Colorado' }}" selected='selected' value='Colorado'>Colorado</option><option sys:if="{{ $dataItem.get_systemValue() != 'Colorado' }}" value='Colorado'>Colorado</option><option sys:if="{{ $dataItem.get_systemValue() == 'Connecticut' }}" selected='selected' value='Connecticut'>Connecticut</option><option sys:if="{{ $dataItem.get_systemValue() != 'Connecticut' }}" value='Connecticut'>Connecticut</option><option sys:if="{{ $dataItem.get_systemValue() == 'District of Columbia' }}" selected='selected' value='District of Columbia'>District of Columbia</option><option sys:if="{{ $dataItem.get_systemValue() != 'District of Columbia' }}" value='District of Columbia'>District of Columbia</option><option sys:if="{{ $dataItem.get_systemValue() == 'Delaware' }}" selected='selected' value='Delaware'>Delaware</option><option sys:if="{{ $dataItem.get_systemValue() != 'Delaware' }}" value='Delaware'>Delaware</option><option sys:if="{{ $dataItem.get_systemValue() == 'Florida' }}" selected='selected' value='Florida'>Florida</option><option sys:if="{{ $dataItem.get_systemValue() != 'Florida' }}" value='Florida'>Florida</option><option sys:if="{{ $dataItem.get_systemValue() == 'Georgia' }}" selected='selected' value='Georgia'>Georgia</option><option sys:if="{{ $dataItem.get_systemValue() != 'Georgia' }}" value='Georgia'>Georgia</option><option sys:if="{{ $dataItem.get_systemValue() == 'Guam' }}" selected='selected' value='Guam'>Guam</option><option sys:if="{{ $dataItem.get_systemValue() != 'Guam' }}" value='Guam'>Guam</option><option sys:if="{{ $dataItem.get_systemValue() == 'Hawaii' }}" selected='selected' value='Hawaii'>Hawaii</option><option sys:if="{{ $dataItem.get_systemValue() != 'Hawaii' }}" value='Hawaii'>Hawaii</option><option sys:if="{{ $dataItem.get_systemValue() == 'Idaho' }}" selected='selected' value='Idaho'>Idaho</option><option sys:if="{{ $dataItem.get_systemValue() != 'Idaho' }}" value='Idaho'>Idaho</option><option sys:if="{{ $dataItem.get_systemValue() == 'Illinois' }}" selected='selected' value='Illinois'>Illinois</option><option sys:if="{{ $dataItem.get_systemValue() != 'Illinois' }}" value='Illinois'>Illinois</option><option sys:if="{{ $dataItem.get_systemValue() == 'Indiana' }}" selected='selected' value='Indiana'>Indiana</option><option sys:if="{{ $dataItem.get_systemValue() != 'Indiana' }}" value='Indiana'>Indiana</option><option sys:if="{{ $dataItem.get_systemValue() == 'Iowa' }}" selected='selected' value='Iowa'>Iowa</option><option sys:if="{{ $dataItem.get_systemValue() != 'Iowa' }}" value='Iowa'>Iowa</option><option sys:if="{{ $dataItem.get_systemValue() == 'Kansas' }}" selected='selected' value='Kansas'>Kansas</option><option sys:if="{{ $dataItem.get_systemValue() != 'Kansas' }}" value='Kansas'>Kansas</option><option sys:if="{{ $dataItem.get_systemValue() == 'Kentucky' }}" selected='selected' value='Kentucky'>Kentucky</option><option sys:if="{{ $dataItem.get_systemValue() != 'Kentucky' }}" value='Kentucky'>Kentucky</option><option sys:if="{{ $dataItem.get_systemValue() == 'Louisiana' }}" selected='selected' value='Louisiana'>Louisiana</option><option sys:if="{{ $dataItem.get_systemValue() != 'Louisiana' }}" value='Louisiana'>Louisiana</option><option sys:if="{{ $dataItem.get_systemValue() == 'Maine' }}" selected='selected' value='Maine'>Maine</option><option sys:if="{{ $dataItem.get_systemValue() != 'Maine' }}" value='Maine'>Maine</option><option sys:if="{{ $dataItem.get_systemValue() == 'Maryland' }}" selected='selected' value='Maryland'>Maryland</option><option sys:if="{{ $dataItem.get_systemValue() != 'Maryland' }}" value='Maryland'>Maryland</option><option sys:if="{{ $dataItem.get_systemValue() == 'Massachusetts' }}" selected='selected' value='Massachusetts'>Massachusetts</option><option sys:if="{{ $dataItem.get_systemValue() != 'Massachusetts' }}" value='Massachusetts'>Massachusetts</option><option sys:if="{{ $dataItem.get_systemValue() == 'Michigan' }}" selected='selected' value='Michigan'>Michigan</option><option sys:if="{{ $dataItem.get_systemValue() != 'Michigan' }}" value='Michigan'>Michigan</option><option sys:if="{{ $dataItem.get_systemValue() == 'Minnesota' }}" selected='selected' value='Minnesota'>Minnesota</option><option sys:if="{{ $dataItem.get_systemValue() != 'Minnesota' }}" value='Minnesota'>Minnesota</option><option sys:if="{{ $dataItem.get_systemValue() == 'Mississippi' }}" selected='selected' value='Mississippi'>Mississippi</option><option sys:if="{{ $dataItem.get_systemValue() != 'Mississippi' }}" value='Mississippi'>Mississippi</option><option sys:if="{{ $dataItem.get_systemValue() == 'Missouri' }}" selected='selected' value='Missouri'>Missouri</option><option sys:if="{{ $dataItem.get_systemValue() != 'Missouri' }}" value='Missouri'>Missouri</option><option sys:if="{{ $dataItem.get_systemValue() == 'Montana' }}" selected='selected' value='Montana'>Montana</option><option sys:if="{{ $dataItem.get_systemValue() != 'Montana' }}" value='Montana'>Montana</option><option sys:if="{{ $dataItem.get_systemValue() == 'Nebraska' }}" selected='selected' value='Nebraska'>Nebraska</option><option sys:if="{{ $dataItem.get_systemValue() != 'Nebraska' }}" value='Nebraska'>Nebraska</option><option sys:if="{{ $dataItem.get_systemValue() == 'New Hampshire' }}" selected='selected' value='New Hampshire'>New Hampshire</option><option sys:if="{{ $dataItem.get_systemValue() != 'New Hampshire' }}" value='New Hampshire'>New Hampshire</option><option sys:if="{{ $dataItem.get_systemValue() == 'New Jersey' }}" selected='selected' value='New Jersey'>New Jersey</option><option sys:if="{{ $dataItem.get_systemValue() != 'New Jersey' }}" value='New Jersey'>New Jersey</option><option sys:if="{{ $dataItem.get_systemValue() == 'New Mexico' }}" selected='selected' value='New Mexico'>New Mexico</option><option sys:if="{{ $dataItem.get_systemValue() != 'New Mexico' }}" value='New Mexico'>New Mexico</option><option sys:if="{{ $dataItem.get_systemValue() == 'New York' }}" selected='selected' value='New York'>New York</option><option sys:if="{{ $dataItem.get_systemValue() != 'New York' }}" value='New York'>New York</option><option sys:if="{{ $dataItem.get_systemValue() == 'Nevada' }}" selected='selected' value='Nevada'>Nevada</option><option sys:if="{{ $dataItem.get_systemValue() != 'Nevada' }}" value='Nevada'>Nevada</option><option sys:if="{{ $dataItem.get_systemValue() == 'North Carolina' }}" selected='selected' value='North Carolina'>North Carolina</option><option sys:if="{{ $dataItem.get_systemValue() != 'North Carolina' }}" value='North Carolina'>North Carolina</option><option sys:if="{{ $dataItem.get_systemValue() == 'North Dakota' }}" selected='selected' value='North Dakota'>North Dakota</option><option sys:if="{{ $dataItem.get_systemValue() != 'North Dakota' }}" value='North Dakota'>North Dakota</option><option sys:if="{{ $dataItem.get_systemValue() == 'Ohio' }}" selected='selected' value='Ohio'>Ohio</option><option sys:if="{{ $dataItem.get_systemValue() != 'Ohio' }}" value='Ohio'>Ohio</option><option sys:if="{{ $dataItem.get_systemValue() == 'Oklahoma' }}" selected='selected' value='Oklahoma'>Oklahoma</option><option sys:if="{{ $dataItem.get_systemValue() != 'Oklahoma' }}" value='Oklahoma'>Oklahoma</option><option sys:if="{{ $dataItem.get_systemValue() == 'Oregon' }}" selected='selected' value='Oregon'>Oregon</option><option sys:if="{{ $dataItem.get_systemValue() != 'Oregon' }}" value='Oregon'>Oregon</option><option sys:if="{{ $dataItem.get_systemValue() == 'Pennsylvania' }}" selected='selected' value='Pennsylvania'>Pennsylvania</option><option sys:if="{{ $dataItem.get_systemValue() != 'Pennsylvania' }}" value='Pennsylvania'>Pennsylvania</option><option sys:if="{{ $dataItem.get_systemValue() == 'Puerto Rico' }}" selected='selected' value='Puerto Rico'>Puerto Rico</option><option sys:if="{{ $dataItem.get_systemValue() != 'Puerto Rico' }}" value='Puerto Rico'>Puerto Rico</option><option sys:if="{{ $dataItem.get_systemValue() == 'Rhode Island' }}" selected='selected' value='Rhode Island'>Rhode Island</option><option sys:if="{{ $dataItem.get_systemValue() != 'Rhode Island' }}" value='Rhode Island'>Rhode Island</option><option sys:if="{{ $dataItem.get_systemValue() == 'South Carolina' }}" selected='selected' value='South Carolina'>South Carolina</option><option sys:if="{{ $dataItem.get_systemValue() != 'South Carolina' }}" value='South Carolina'>South Carolina</option><option sys:if="{{ $dataItem.get_systemValue() == 'South Dakota' }}" selected='selected' value='South Dakota'>South Dakota</option><option sys:if="{{ $dataItem.get_systemValue() != 'South Dakota' }}" value='South Dakota'>South Dakota</option><option sys:if="{{ $dataItem.get_systemValue() == 'Tennessee' }}" selected='selected' value='Tennessee'>Tennessee</option><option sys:if="{{ $dataItem.get_systemValue() != 'Tennessee' }}" value='Tennessee'>Tennessee</option><option sys:if="{{ $dataItem.get_systemValue() == 'Texas' }}" selected='selected' value='Texas'>Texas</option><option sys:if="{{ $dataItem.get_systemValue() != 'Texas' }}" value='Texas'>Texas</option><option sys:if="{{ $dataItem.get_systemValue() == 'Utah' }}" selected='selected' value='Utah'>Utah</option><option sys:if="{{ $dataItem.get_systemValue() != 'Utah' }}" value='Utah'>Utah</option><option sys:if="{{ $dataItem.get_systemValue() == 'Vermont' }}" selected='selected' value='Vermont'>Vermont</option><option sys:if="{{ $dataItem.get_systemValue() != 'Vermont' }}" value='Vermont'>Vermont</option><option sys:if="{{ $dataItem.get_systemValue() == 'Virgin Islands' }}" selected='selected' value='Virgin Islands'>Virgin Islands</option><option sys:if="{{ $dataItem.get_systemValue() != 'Virgin Islands' }}" value='Virgin Islands'>Virgin Islands</option><option sys:if="{{ $dataItem.get_systemValue() == 'Virginia' }}" selected='selected' value='Virginia'>Virginia</option><option sys:if="{{ $dataItem.get_systemValue() != 'Virginia' }}" value='Virginia'>Virginia</option><option sys:if="{{ $dataItem.get_systemValue() == 'Washington' }}" selected='selected' value='Washington'>Washington</option><option sys:if="{{ $dataItem.get_systemValue() != 'Washington' }}" value='Washington'>Washington</option><option sys:if="{{ $dataItem.get_systemValue() == 'West Virginia' }}" selected='selected' value='West Virginia'>West Virginia</option><option sys:if="{{ $dataItem.get_systemValue() != 'West Virginia' }}" value='West Virginia'>West Virginia</option><option sys:if="{{ $dataItem.get_systemValue() == 'Wisconsin' }}" selected='selected' value='Wisconsin'>Wisconsin</option><option sys:if="{{ $dataItem.get_systemValue() != 'Wisconsin' }}" value='Wisconsin'>Wisconsin</option><option sys:if="{{ $dataItem.get_systemValue() == 'Wyoming' }}" selected='selected' value='Wyoming'>Wyoming</option><option sys:if="{{ $dataItem.get_systemValue() != 'Wyoming' }}" value='Wyoming'>Wyoming</option></select></div></div><div class='c-offscreen'><label sys:for='{{ $id("c-62-")}}'>{{ Cognito.resources["address-zip-code"] }}</label></div><div style='float: left;' class='c-editor c-partial-line'><input sys:id='c-62-' type='text' sys:placeholder='{{ Cognito.resources["address-zip-code"] }}' sys:value='{# PostalCode}' /></div></div><div class='c-validation'>{ binding firstError.message }</div></div></span></div>
+                </div>
+                <div class='c-field c-span-24 c-sml-span-12 c-col-1 c-forms-payment'>
+                    <div class='sys-template c-title' sys:attach='dataview' dataview:data='{binding entry, source={{ Cognito.Forms.model }} }'>
+                        <h3 class="c-forms-payment-label">{~ Payment_Block_Label}</h3></div>
+                    <div class="c-payment-section">
+                        <div class="c-background-highlight">
+                            <div class='c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template c-order-noaccount c-field' sys:attach='dataview' dataview:data='{binding order, source = {{ Cognito.Forms.model }} }'>
+                                <table class='c-order-summary'>
+                                    <tbody class='c-editor c-line-item-container sys-template' sys:attach='dataview' dataview:data="{~ LineItems }">
+                                        <tr class='c-forms-payment-lineitem-group' sys:if='{{ Cognito.Forms.showLineItemGroup($dataItem, $context.parentContext.dataItem) }}'>
+                                            <td colspan='2'>{binding Group}</td>
+                                        </tr>
+                                        <tr class='c-order-item'>
+                                            <td sys:class='{{ $dataItem.get_Group() ? "c-forms-payment-lineitem-label grouped" : "c-forms-payment-lineitem-label" }}'><span class='c-forms-payment-lineitem-description'>{binding Name}</span><span sys:if='{{$dataItem.get_Description()}}'><span> - </span><span class='c-text-light c-forms-payment-lineitem-variant'>{binding Description}</span></span>
+                                            </td>
+                                            <td class='c-forms-payment-lineitem-amount sys-template' sys:attach='dataview' dataview:data='{@ Amount}'><span>{binding displayValue}</span></td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr class='c-editor c-order-item c-subtotal c-background-highlight sys-template' sys:attach='dataview' dataview:data='{@ SubTotal}'>
+                                            <td>{{ Cognito.resources['payment-subtotal'] + ":" }}</td>
+                                            <td class='c-forms-payment-subtotal-amount'>{binding displayValue}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody class='c-editor sys-template' sys:attach='dataview' dataview:data="{~ Fees }">
+                                        <tr class='c-order-item c-additional-fee'>
+                                            <td class='c-forms-payment-fee-label'><span>{binding Name}</span>:</td>
+                                            <td class='c-forms-payment-fee-amount sys-template' sys:attach='dataview' dataview:data='{@ Amount}' sys:if='{{ $dataItem.get_Amount() }}'><span>{binding displayValue}</span></td>
+                                            <td class='c-forms-payment-fee-amount' sys:if='{{ !$dataItem.get_Amount() }}'><span class='c-helptext c-processing-fee-placeholder'>---</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class='sys-template' sys:attach='dataview' dataview:data='{binding order, source = {{ Cognito.Forms.model }} }'>
+                            <div class='c-forms-payment-total-amount sys-template' sys:attach='dataview' dataview:data='{@ OrderAmount}'>{{ Cognito.resources['payment-amount-due'] + ":" }} <span>{binding displayValue}</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div id='c-recaptcha-div'></div>
+                <div class='c-forms-error'>
+                    <div class='c-validation'></div>
+                </div>
+                <div class='c-button-section'>
+                    <div class='c-action'>
+                        <button type='button' class='c-page-nav c-page-previous-page c-button'>Back</button>
+                        <button type='submit' class='c-button' id='c-submit-button'>Submit</button>
+                    </div>
+                </div>
+                <div class='sys-template c-page-numbering' sys:attach='dataview' dataview:data='{binding entry, source={{ Cognito.Forms.model }} }'>{# pageNumbers}</div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class='c-forms-confirmation'>
+        <div class='c-forms-heading'>
+            <div class='c-forms-logo'><img style='max-width: 100%;' src='https://services.cognito.test/file/fZYM3wbJfPLbLiT0Pv6C7bK6cnnb-FNdiTMIzgHaEbXDj9LwDJMsoFE2paMIsiVV' /></div>
+            <div class='c-forms-form-title'>
+                <h2>Vue - Phase 1</h2></div>
+        </div>
+        <div class='c-forms-confirmation-message c-html sys-template' sys:attach='dataview' dataview:data='{binding entry, source={{ Cognito.Forms.model }} }'><span sys:innerHtml='{binding confirmationFormat}'></span></div>
+        <div class="c-forms-payment-order-summary c-section sys-template" sys:attach='dataview' dataview:data='{binding order, source = {{ Cognito.Forms.model }} }'>
+            <div class='c-span-24 c-sml-span-12'>
+                <div class='c-section c-span-12 c-col-1 c-sml-span-12'>
+                    <div class='c-title'>
+                        <h4>{{ Cognito.resources['order-transaction-details-header'] }}</h4></div>
+                    <div class='c-section'>
+                        <div class="detail sys-template" sys:attach='dataview' dataview:data='{@ Id}'><span>{{ Cognito.resources['order-number-label'] }}:</span> <span>{binding displayValue}</span></div>
+                        <div class="detail sys-template" sys:attach='dataview' dataview:data='{@ Date}'><span>{{ Cognito.resources['order-date-label'] }}:</span> <span>{binding displayValue}</span></div>
+                        <div class="detail" sys:attach="toggle" toggle:on="{binding MethodReference}" toggle:action="show"><span>{{ Cognito.resources['order-method-label'] }}:</span> <span>{binding MethodReference}</span></div>
+                    </div>
+                </div>
+                <div class='c-section c-span-12 c-col-13 c-sml-span-12'></div>
+                <div class="c-payment-section c-section">
+                    <div class="c-background-highlight">
+                        <table class="c-order-summary">
+                            <tbody class='c-editor sys-template' sys:attach='dataview' dataview:data="{~ LineItems }">
+                                <tr sys:if='{{ Cognito.Forms.showLineItemGroup($dataItem, $context.parentContext.dataItem) }}'>
+                                    <td colspan='2' class='c-forms-payment-lineitem-group'><span style='font-weight:bold;'>{binding Group}</span></td>
+                                </tr>
+                                <tr class='c-order-item'>
+                                    <td sys:class='{{ $dataItem.get_Group() ? "c-forms-payment-lineitem-label grouped" : "c-forms-payment-lineitem-label" }}'><span class='c-forms-payment-lineitem-description'>{binding Name}</span><span sys:if='{{$dataItem.get_Description()}}'><span> - </span><span class='c-forms-payment-lineitem-variant c-text-light'>{binding Description}</span></span>
+                                    </td>
+                                    <td class='c-forms-payment-lineitem-amount sys-template' sys:attach='dataview' dataview:data='{@ Amount}'><span>{binding displayValue}</span></td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr class="c-editor c-order-item c-subtotal c-background-highlight sys-template" sys:attach='dataview' dataview:data='{@ SubTotal}'>
+                                    <td>{{ Cognito.resources['payment-subtotal'] + ":" }}</td>
+                                    <td class='c-forms-payment-subtotal-amount'>{binding displayValue}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class='c-editor c-order-item sys-template' sys:attach='dataview' dataview:data='{@ OrderAmount}'>
+                                    <td colspan='2' class='c-forms-order-total-amount'>{{ Cognito.resources['order-total-label'] }}: <span>{binding displayValue}</span></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='c-forms-form-details c-readonly'>
+            <div class='c-forms-template sys-template' sys:attach='dataview' dataview:data='{binding entry, source={{ Cognito.Forms.model }} }'>
+                <div class='c-section c-span-24'>
+                    <div class='c-page'><span class='c-visible-container' sys:attach='toggle' toggle:onshowing='{{ Cognito.toggleAnimationShow }}' toggle:onhiding='{{ Cognito.toggleAnimationHide }}' toggle:on='{binding isVisible0}' toggle:action='show'><div class='c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12'><div class='c-editor c-html' sys:innerHtml='{binding contentFormat1, convert=Cognito.formatText}'></div></div></span><span sys:if="{{ Cognito.config.mode === 'admin' }}"><div class='c-text-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ WhatIsVue}'><div class='c-label  '>What is Vue?</div><div class='c-editor'>{binding displayValue}</div></div></span>
+                        <div class='c-yesno-checkbox c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ RateYourSatisfaction}'>
+                            <div class='c-label  '>Rate your satisfaction?</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div><span class='c-visible-container' sys:attach='toggle' toggle:onshowing='{{ Cognito.toggleAnimationShow }}' toggle:onhiding='{{ Cognito.toggleAnimationHide }}' toggle:on='{binding RateYourSatisfactionWithVue_IsVisible}' toggle:action='show'><div class='c-rating-scale c-field c-col-1 c-sml-col-1 c-span-24 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ RateYourSatisfactionWithVue}'><legend class='c-label '>Rate your satisfaction with Vue</legend><div class='c-rating-scale-questions'><div class='c-question c-field c-col-1 c-sml-col-1 c-span-24 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ EaseOfUse}'><div class='c-label  '>{{ $dataItem.get_label() }}</div><div class='c-editor'>{binding displayValue}</div></div><div class='c-question c-field c-col-1 c-sml-col-1 c-span-24 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Documentation}'><div class='c-label  '>{{ $dataItem.get_label() }}</div><div class='c-editor'>{binding displayValue}</div></div><div class='c-question c-field c-col-1 c-sml-col-1 c-span-24 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Ecosystem}'><div class='c-label  '>{{ $dataItem.get_label() }}</div><div class='c-editor'>{binding displayValue}</div></div><div class='c-question c-field c-col-1 c-sml-col-1 c-span-24 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Performance}'><div class='c-label  '>{{ $dataItem.get_label() }}</div><div class='c-editor'>{binding displayValue}</div></div><div class='c-question c-field c-col-1 c-sml-col-1 c-span-24 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Flexibility}'><div class='c-label  '>{{ $dataItem.get_label() }}</div><div class='c-editor'>{binding displayValue}</div></div><div class='c-question c-field c-col-1 c-sml-col-1 c-span-24 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Testability}'><div class='c-label  '>{{ $dataItem.get_label() }}</div><div class='c-editor'>{binding displayValue}</div></div></div></div></span>
+                        <div class='c-yesno-checkbox c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ShowTextFields}'>
+                            <div class='c-label  '>Show text fields?</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div><span class='c-visible-container' sys:attach='toggle' toggle:onshowing='{{ Cognito.toggleAnimationShow }}' toggle:onhiding='{{ Cognito.toggleAnimationHide }}' toggle:on='{binding Textbox2_IsVisible}' toggle:action='show'><div class='c-section c-col-1 c-sml-col-1 c-span-24 c-sml-span-12'><div class='c-title'><h3>Textbox</h3></div><div class='c-helptext'>Demonstrates all usages of the Textbox field type.
+[Textbox]</div><div class='sys-template' sys:attach='dataview' dataview:data='{~ Textbox2}'><div class='c-text-singleline c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Textbox}'><div class='c-label  '>Textbox</div><div class='c-editor'>{binding displayValue}</div></div><div class='c-text-singleline c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ TextboxWithSSNMask}'><div class='c-label  '>Textbox With SSN Mask</div><div class='c-editor'>{binding displayValue}</div></div><div class='c-text-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ TextboxWithLicensePlateMask}'><div class='c-label  '>Textbox With License Plate Mask</div><div class='c-editor'>{binding displayValue}</div></div><div class='c-text-multiplelines c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ TextboxMultipleLines}'><div class='c-label  '>Textbox Multiple Lines</div><div class='c-editor'><div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div></div></div><div class='c-text-multiplelines c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ TextboxMultipleLinesWithPlaceholder}'><div class='c-label  '>Textbox Multiple Lines With Placeholder</div><div class='c-editor'><div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div></div></div><div class='c-text-password c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ TextboxPassword}'><div class='c-label  '>Textbox Password</div><div class='c-editor'>{binding displayValue, convert=Cognito.maskText }</div></div><div class='c-text-password c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ TextboxPasswordWithPlaceholder}'><div class='c-label  '>Textbox Password With Placeholder</div><div class='c-editor'>{binding displayValue, convert=Cognito.maskText }</div></div><div class='c-text-singleline c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ FieldBelowSectionWithoutLabel}'><div class='c-label  '>Field Below Section Without Label</div><div class='c-editor'>{binding displayValue}</div></div></div><div class='c-validation sys-template' sys:attach='dataview' dataview:data='{@ Textbox2}'>{ binding firstError.message }</div></div></span>
+                        <div class='c-number-integer c-field c-col-1 c-sml-col-1 c-span-6 c-sml-span-6 sys-template' sys:attach='dataview' dataview:data='{@ NumberInteger}'>
+                            <div class='c-label  '>Number - Integer</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div>
+                        <div class='c-number-decimal c-field c-col-7 c-sml-col-7 c-span-6 c-sml-span-6 sys-template' sys:attach='dataview' dataview:data='{@ NumberDecimal0}'>
+                            <div class='c-label  '>Number - Decimal(0)</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div>
+                        <div class='c-number-decimal c-field c-col-13 c-sml-col-1 c-span-6 c-sml-span-6 sys-template' sys:attach='dataview' dataview:data='{@ NumberDecimal2}'>
+                            <div class='c-label  '>Number - Decimal(2)</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div>
+                        <div class='c-number-percent c-field c-col-19 c-sml-col-7 c-span-6 c-sml-span-6 sys-template' sys:attach='dataview' dataview:data='{@ NumberPercent}'>
+                            <div class='c-label  '>Number - Percent</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div>
+                        <div class='c-currency c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Currency}'>
+                            <div class='c-label  '>Currency</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div>
+                        <div class='c-calculation-currency c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Price}'>
+                            <div class='c-label  '>Price</div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                        </div>
+                        <div class='c-phone c-phone-us c-field c-col-1 c-sml-col-1 c-span-8 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Phone}'>
+                            <div class='c-label  '>Phone</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div>
+                        <div class='c-email c-field c-col-9 c-sml-col-1 c-span-8 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Email}'>
+                            <div class='c-label  '>Email</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div>
+                        <div class='c-website c-field c-col-17 c-sml-col-1 c-span-8 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Website}'>
+                            <div class='c-label  '>Website</div>
+                            <div class='c-editor'><a sys:href='{binding displayValue}' target='_blank'>{binding displayValue}</a></div>
+                        </div>
+                    </div>
+                    <div class='sys-template c-page' sys:attach='toggle' toggle:on='{binding page2_IsVisible}' toggle:action='render'>
+                        <div class='c-calculation-singleline c-field c-col-1 c-sml-col-1 c-span-8 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ CalculationText}'>
+                            <div class='c-label  '>Calculation - Text</div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                        </div>
+                        <div class='c-calculation-yesno c-field c-col-9 c-sml-col-1 c-span-8 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ CalculationYesNo}'>
+                            <div class='c-label  '>Calculation - Yes/No</div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                        </div>
+                        <div class='c-calculation-decimal c-field c-col-17 c-sml-col-1 c-span-8 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ CalculationNumber}'>
+                            <div class='c-label  '>Calculation - Number</div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                        </div>
+                        <div class='c-calculation-percent c-field c-col-1 c-sml-col-1 c-span-6 c-sml-span-6 sys-template' sys:attach='dataview' dataview:data='{@ CalculationPercent}'>
+                            <div class='c-label  '>Calculation - Percent</div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                        </div>
+                        <div class='c-calculation-currency c-field c-col-7 c-sml-col-7 c-span-6 c-sml-span-6 sys-template' sys:attach='dataview' dataview:data='{@ CalculationCurrency}'>
+                            <div class='c-label  '>Calculation - Currency</div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                        </div>
+                        <div class='c-calculation-date c-field c-col-13 c-sml-col-1 c-span-6 c-sml-span-6 sys-template' sys:attach='dataview' dataview:data='{@ CalculationDate}'>
+                            <div class='c-label  '>Calculation - Date</div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                        </div>
+                        <div class='c-calculation-time c-field c-col-19 c-sml-col-7 c-span-6 c-sml-span-6 sys-template' sys:attach='dataview' dataview:data='{@ CalculationTime}'>
+                            <div class='c-label  '>Calculation - Time</div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                        </div>
+                        <div class='c-date-date c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Date}'>
+                            <div class='c-label  '>Date</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div>
+                        <div class='c-date-time c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Time}'>
+                            <div class='c-label  '>Time</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div>
+                        <div class='c-choice-dropdown c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ChoiceDropDown}'>
+                            <div class='c-label  '>Choice - Drop Down</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div>
+                        <div class='c-calculation-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ChoiceDropDownSelectedValue}'>
+                            <div class='c-label  '>Choice - DropDown (Selected Value)</div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                        </div>
+                        <div class='c-choice-radiobuttons c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ChoiceRadioButtons}'>
+                            <div class='c-label  '>Choice - Radio Buttons</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div>
+                        <div class='c-calculation-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ChoiceRadioButtonsSelectedValue}'>
+                            <div class='c-label  '>Choice - Radio Buttons (Selected Value)</div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                        </div>
+                        <div class='c-choice-checkboxes c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ChoiceCheckboxes}'>
+                            <div class='c-label  '>Choice - Checkboxes</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div>
+                        <div class='c-calculation-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ChoiceCheckboxesSelectedValue}'>
+                            <div class='c-label  '>Choice - Checkboxes (Selected Value)</div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                        </div>
+                        <div class='c-yesno-radiobuttons c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ YesNoRadioButtons}'>
+                            <div class='c-label  '>Yes/No - Radio Buttons</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div>
+                        <div class='c-calculation-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ YesNoRadioButtonsSelectedValue}'>
+                            <div class='c-label  '>Yes/No - Radio Buttons (Selected Value)</div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                        </div>
+                        <div class='c-yesno-checkbox c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ YesNoCheckbox}'>
+                            <div class='c-label  '>Yes/No - Checkbox</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div>
+                        <div class='c-calculation-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ YesNoCheckboxSelectedValue}'>
+                            <div class='c-label  '>Yes/No - Checkbox (Selected Value)</div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                        </div>
+                        <div class='c-yesno-toggle c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ YesNoToggle}'>
+                            <div class='c-label  '>Yes/No - Toggle</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div>
+                        <div class='c-calculation-singleline c-field c-col-13 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ YesNoToggleSelectedValue}'>
+                            <div class='c-label  '>Yes/No - Toggle (Selected Value)</div>
+                            <div class='c-editor'>
+                                <div class='c-content' sys:innerHtml='{ binding displayValue, convert=Cognito.escapeAndFormat }'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='sys-template c-page' sys:attach='toggle' toggle:on='{binding page3_IsVisible}' toggle:action='render'>
+                        <div class='c-section c-col-1 c-sml-col-1 c-span-24 c-sml-span-12'>
+                            <div class='c-title'>
+                                <h3>Section</h3></div>
+                            <div class='sys-template' sys:attach='dataview' dataview:data='{~ Section}'>
+                                <div class='c-text-singleline c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ThisIsText}'>
+                                    <div class='c-label  '>This is text</div>
+                                    <div class='c-editor'>{binding displayValue}</div>
+                                </div>
+                            </div>
+                            <div class='c-validation sys-template' sys:attach='dataview' dataview:data='{@ Section}'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-section c-col-1 c-sml-col-1 c-span-24 c-sml-span-12'>
+                            <div class='c-title c-repeating-section-title'>
+                                <h3>Repeating Section</h3></div>
+                            <div class='c-repeating-section-group sys-template' sys:attach='dataview' dataview:data='{~ RepeatingSection}' dataview:useoptimalupdates='{{ true }}'>
+                                <div class='c-repeating-section-container'>
+                                    <div class='c-repeating-section-item-title'>
+                                        <h4>Thing <span>{binding ItemNumber}</span></h4></div>
+                                    <div class='c-repeating-section-item'>
+                                        <div class='c-text-singleline c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ RepeatingText}'>
+                                            <div class='c-label  '>Repeating Text</div>
+                                            <div class='c-editor'>{binding displayValue}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='c-validation sys-template' style='display: block' sys:attach='dataview' dataview:data='{@ RepeatingSection}'>{ binding firstError.message }</div>
+                        </div>
+                        <div class='c-yesno-checkbox c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ShowName}'>
+                            <div class='c-label  '>Show name?</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div><span class='c-visible-container' sys:attach='toggle' toggle:onshowing='{{ Cognito.toggleAnimationShow }}' toggle:onhiding='{{ Cognito.toggleAnimationHide }}' toggle:on='{binding Name_IsVisible}' toggle:action='show'><div class='c-name c-field c-col-1 c-sml-col-1 c-span-24 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Name}'><div class='c-label  '>Name</div><div class='c-editor'>{binding displayValue}</div></div></span>
+                        <div class='c-yesno-radiobuttons c-field c-col-1 c-sml-col-1 c-span-12 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ ShowAddress}'>
+                            <div class='c-label  '>Show address?</div>
+                            <div class='c-editor'>{binding displayValue}</div>
+                        </div><span class='c-visible-container' sys:attach='toggle' toggle:onshowing='{{ Cognito.toggleAnimationShow }}' toggle:onhiding='{{ Cognito.toggleAnimationHide }}' toggle:on='{binding Address_IsVisible}' toggle:action='show'><div class='c-address c-address-us c-field c-col-1 c-sml-col-1 c-span-24 c-sml-span-12 sys-template' sys:attach='dataview' dataview:data='{@ Address}'><div class='c-label  '>Address</div><div class='c-editor'>{binding displayValue}</div></div></span></div>
+                </div>
+                <div class='c-page c-page-page3' sys:attach='toggle' toggle:onshowing='{{ Cognito.toggleAnimationShow }}' toggle:onhiding='{{ Cognito.toggleAnimationHide }}' toggle:on='{binding page3_IsVisible, source={{ Cognito.Forms.model.entry }}}' toggle:action='show'>
+                    <div>
+                        <div id='c-recaptcha-div'></div>
+                        <div class='c-forms-error'>
+                            <div class='c-validation'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='c-forms-confirmation-message'>
+            <div class='c-forms-document-links'></div>
+        </div>
+    </div>
+    </div>
+</form>

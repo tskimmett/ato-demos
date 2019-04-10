@@ -1,0 +1,294 @@
+<form ref='form' class='cognito c-light-background'
+	:class='["c-submission-status--"+submissionStatus, {"c-pre-submit": submissionStatus !== "success"}]' lang='en'>
+	<c-header ref='header' :visible='!flags.hideHeader' title='Vue - Phase 1'
+		description='This form tests the capabilities of Phase 1 of the Vue Form redevelopment project.'
+		logo='https://services.cognito.test/file/fZYM3wbJfPLbLiT0Pv6C7bK6cnnb-FNdiTMIzgHaEbXDj9LwDJMsoFE2paMIsiVV'
+		layout='column' alignment='left' background='#6aa84f' />
+	<c-page-progress v-if='showNavigation && !showConfirmation' @goto='navigateTo' :show-titles='true'
+		:currentPage='currentPage' :pages='visiblePages' display='steps' />
+	<div class='c-body' ref='body'>
+		<c-confirmation @created='confirmationCreated' :entry='entry'
+			confirmationMessage='&lt;p>Thank you for filling out the form. Your response has been recorded.   [NumberPercent] &lt;/p>'
+			redirectUrl='' :visible='showNavigation && showConfirmation' entryDetails />
+		<c-page ref='page1' @toggle='pageToggled' @entering='pageEntering' @entered='pageEntered'
+			:showNavigation='showNavigation' :visible='true'
+			:current='showAllPages || (pageNumber === 1 && !showConfirmation)' :number='1' next-button='Next'
+			title='Page 1'>
+			<c-row>
+				<visible-transition>
+					<c-content
+						content='&lt;p>&lt;a href=&quot;https://vuejs.org/&quot; target=&quot;_blank&quot;>Vue&lt;/a> is &lt;strong>[WhatIsVue]&lt;/strong>&lt;span id=&quot;mce_editablecaret&quot;>!&lt;/span>&lt;/p>
+&lt;p>&lt;img src=&quot;https://vuejs.org/images/logo.png&quot; alt=&quot;&quot; width=&quot;34&quot; height=&quot;34&quot; />&lt;/p>'
+						:cols='12' v-if='entity._Visible' />
+				</visible-transition>
+				<c-field source='WhatIsVue' v-slot='fieldSlot' :cols='12' v-if='flags.internal'>
+					<c-input type='text' v-model='fieldSlot.field.displayValue' :readonly='fieldSlot.field.readonly' />
+				</c-field>
+			</c-row>
+			<c-row>
+				<c-field source='RateYourSatisfaction' v-slot='{ field }' :hideLabel='!$source.readonly' :cols='12'>
+					<c-checkbox :label='field.label' :inactive-text='field.options[1].displayValue'
+						:active-text='field.options[0].displayValue' :readonly='field.readonly' v-model='field.value' />
+				</c-field>
+			</c-row>
+			<c-row>
+				<visible-transition>
+					<c-rating-scale source='RateYourSatisfactionWithVue'
+						v-if='entity.RateYourSatisfactionWithVue_Visible' />
+				</visible-transition>
+			</c-row>
+			<c-row>
+				<c-field source='ShowTextFields' v-slot='fieldSlot' :hideLabel='!$source.readonly' :cols='12'>
+					<c-checkbox :label='fieldSlot.field.label' :inactive-text='fieldSlot.field.options[1].displayValue'
+						:active-text='fieldSlot.field.options[0].displayValue' :readonly='fieldSlot.field.readonly'
+						v-model='fieldSlot.field.value' />
+				</c-field>
+			</c-row>
+			<c-row>
+				<visible-transition>
+					<c-section source='Textbox2' v-slot='sectionSlot' v-if='entity.Textbox2_Visible'>
+						<c-row>
+							<c-field source='Textbox' v-slot='fieldSlot' :cols='12'>
+								<c-input type='text' v-model='fieldSlot.field.displayValue'
+									:readonly='fieldSlot.field.readonly' :maxlength='10' />
+							</c-field>
+						</c-row>
+						<c-row>
+							<c-field source='TextboxWithSSNMask' v-slot='fieldSlot' :cols='12'>
+								<c-input type='text' v-model='fieldSlot.field.displayValue'
+									:readonly='fieldSlot.field.readonly' :mask="'###-##-####'" />
+							</c-field>
+							<c-field source='TextboxWithLicensePlateMask' v-slot='fieldSlot' :cols='12'>
+								<c-input type='text' v-model='fieldSlot.field.displayValue'
+									:readonly='fieldSlot.field.readonly' :mask="'###-SSS'" />
+							</c-field>
+						</c-row>
+						<c-row>
+							<c-field source='TextboxMultipleLines' v-slot='fieldSlot' :cols='12'>
+								<c-input type='textarea' v-model='fieldSlot.field.displayValue'
+									:readonly='fieldSlot.field.readonly' :maxlength='10'
+									:autosize='{ minRows: 2, maxRows: 10}' />
+							</c-field>
+							<c-field source='TextboxMultipleLinesWithPlaceholder' v-slot='fieldSlot' :cols='12'>
+								<c-input type='textarea' v-model='fieldSlot.field.displayValue'
+									:readonly='fieldSlot.field.readonly' placeholder='Placeholder'
+									:autosize='{ minRows: 2, maxRows: 10}' />
+							</c-field>
+						</c-row>
+						<c-row>
+							<c-field source='TextboxPassword' v-slot='fieldSlot' :cols='12'>
+								<c-input type='password' v-model='fieldSlot.field.displayValue'
+									:readonly='fieldSlot.field.readonly' :maxlength='10' />
+							</c-field>
+							<c-field source='TextboxPasswordWithPlaceholder' v-slot='fieldSlot' :cols='12'>
+								<c-input type='password' v-model='fieldSlot.field.displayValue'
+									:readonly='fieldSlot.field.readonly' placeholder='Placeholder' />
+							</c-field>
+						</c-row>
+						<c-row>
+							<c-field source='FieldBelowSectionWithoutLabel' v-slot='fieldSlot' :cols='12'>
+								<c-input type='text' v-model='fieldSlot.field.displayValue'
+									:readonly='fieldSlot.field.readonly' />
+							</c-field>
+						</c-row>
+					</c-section>
+				</visible-transition>
+			</c-row>
+			<c-row>
+				<c-field source='NumberInteger' v-slot='{ field }' :cols='6'>
+					<c-input v-model='field.displayValue' :readonly='field.readonly' inputmode='numeric' />
+				</c-field>
+				<c-field source='NumberDecimal0' v-slot='fieldSlot' :cols='6'>
+					<c-input v-model='fieldSlot.field.displayValue' :readonly='fieldSlot.field.readonly'
+						inputmode='numeric' />
+				</c-field>
+				<c-field source='NumberDecimal2' v-slot='fieldSlot' :cols='6'>
+					<c-input v-model='fieldSlot.field.displayValue' :readonly='fieldSlot.field.readonly'
+						inputmode='numeric' />
+				</c-field>
+				<c-field source='NumberPercent' v-slot='fieldSlot' :cols='6'>
+					<c-input v-model='fieldSlot.field.displayValue' :readonly='fieldSlot.field.readonly'
+						inputmode='numeric' />
+				</c-field>
+			</c-row>
+			<c-row>
+				<c-field source='Currency' v-slot='fieldSlot' :cols='12'>
+					<c-input v-model='fieldSlot.field.displayValue' :readonly='fieldSlot.field.readonly'
+						inputmode='numeric' />
+				</c-field>
+				<c-field source='Price' v-slot='fieldSlot' :cols='12'>
+					<c-input type='text' readonly v-model='fieldSlot.field.displayValue' />
+				</c-field>
+			</c-row>
+			<c-row>
+				<c-field source='Phone' v-slot='fieldSlot' :hideLabel='!$source.readonly' :cols='8'>
+					<c-input type='tel' v-model='fieldSlot.field.displayValue' :readonly='fieldSlot.field.readonly'
+						placeholder='Phone' mask="(###) ###-#### x########" />
+				</c-field>
+				<c-field source='Email' v-slot='fieldSlot' :hideLabel='!$source.readonly' :cols='8'>
+					<c-input type='email' v-model='fieldSlot.field.displayValue' :readonly='fieldSlot.field.readonly'
+						placeholder='Email' />
+				</c-field>
+				<c-field source='Website' v-slot='fieldSlot' :hideLabel='!$source.readonly' :cols='8'>
+					<c-input type='url' v-model='fieldSlot.field.displayValue' :readonly='fieldSlot.field.readonly'
+						placeholder='Website' />
+				</c-field>
+			</c-row>
+		</c-page>
+		<c-page ref='page2' @toggle='pageToggled' @entering='pageEntering' @entered='pageEntered'
+			:showNavigation='showNavigation' :visible='true'
+			:current='showAllPages || (pageNumber === 2 && !showConfirmation)' :number='2' next-button='Next'
+			back-button='Back' title='Page 2'>
+			<c-row>
+				<c-field source='CalculationText' v-slot='fieldSlot' :cols='8'>
+					<c-input type='text' readonly v-model='fieldSlot.field.displayValue' />
+				</c-field>
+				<c-field source='CalculationYesNo' v-slot='fieldSlot' :cols='8'>
+					<c-input type='text' readonly v-model='fieldSlot.field.displayValue' />
+				</c-field>
+				<c-field source='CalculationNumber' v-slot='fieldSlot' :cols='8'>
+					<c-input type='text' readonly v-model='fieldSlot.field.displayValue' />
+				</c-field>
+			</c-row>
+			<c-row>
+				<c-field source='CalculationPercent' v-slot='fieldSlot' :cols='6'>
+					<c-input type='text' readonly v-model='fieldSlot.field.displayValue' />
+				</c-field>
+				<c-field source='CalculationCurrency' v-slot='fieldSlot' :cols='6'>
+					<c-input type='text' readonly v-model='fieldSlot.field.displayValue' />
+				</c-field>
+				<c-field source='CalculationDate' v-slot='fieldSlot' :cols='6'>
+					<c-input type='text' readonly v-model='fieldSlot.field.displayValue' />
+				</c-field>
+				<c-field source='CalculationTime' v-slot='fieldSlot' :cols='6'>
+					<c-input type='text' readonly v-model='fieldSlot.field.displayValue' />
+				</c-field>
+			</c-row>
+			<c-row>
+				<c-field source='Date' v-slot='fieldSlot' :cols='12'>
+					<c-date-picker :native='flags.mobile || flags.chameleon' :readonly='fieldSlot.field.readonly'
+						placeholder='Enter a date...' v-model='fieldSlot.field.value' />
+				</c-field>
+				<c-field source='Time' v-slot='fieldSlot' :cols='12'>
+					<c-time-picker :native='flags.mobile || flags.chameleon' :readonly='fieldSlot.field.readonly'
+						placeholder='Enter a time...' v-model='fieldSlot.field.value' />
+				</c-field>
+			</c-row>
+			<c-row>
+				<c-field source='ChoiceDropDown' v-slot='fieldSlot' :cols='12'>
+					<c-select :options='fieldSlot.field.options' :native='flags.mobile || flags.chameleon'
+						:readonly='fieldSlot.field.readonly' v-model='fieldSlot.field.displayValue' />
+				</c-field>
+				<c-field source='ChoiceDropDownSelectedValue' v-slot='fieldSlot' :cols='12'>
+					<c-input type='text' readonly v-model='fieldSlot.field.displayValue' />
+				</c-field>
+			</c-row>
+			<c-row>
+				<c-field source='ChoiceRadioButtons' v-slot='fieldSlot' :cols='12'>
+					<c-radio-group :options='fieldSlot.field.options' :columns='2' :readonly='fieldSlot.field.readonly'
+						v-model='fieldSlot.field.displayValue' />
+				</c-field>
+				<c-field source='ChoiceRadioButtonsSelectedValue' v-slot='fieldSlot' :cols='12'>
+					<c-input type='text' readonly v-model='fieldSlot.field.displayValue' />
+				</c-field>
+			</c-row>
+			<c-row>
+				<c-field source='ChoiceCheckboxes' v-slot='fieldSlot' :cols='12'>
+					<c-checkbox-group :options='fieldSlot.field.options' :columns='2'
+						:readonly='fieldSlot.field.readonly' v-model='fieldSlot.field.value' />
+				</c-field>
+				<c-field source='ChoiceCheckboxesSelectedValue' v-slot='fieldSlot' :cols='12'>
+					<c-input type='text' readonly v-model='fieldSlot.field.displayValue' />
+				</c-field>
+			</c-row>
+			<c-row>
+				<c-field source='YesNoRadioButtons' v-slot='fieldSlot' :cols='12'>
+					<c-radio-group :options='fieldSlot.field.options' :readonly='fieldSlot.field.readonly'
+						v-model='fieldSlot.field.displayValue' />
+				</c-field>
+				<c-field source='YesNoRadioButtonsSelectedValue' v-slot='fieldSlot' :cols='12'>
+					<c-input type='text' readonly v-model='fieldSlot.field.displayValue' />
+				</c-field>
+			</c-row>
+			<c-row>
+				<c-field source='YesNoCheckbox' v-slot='fieldSlot' :hideLabel='!$source.readonly' :cols='12'>
+					<c-checkbox :label='fieldSlot.field.label' :inactive-text='fieldSlot.field.options[1].displayValue'
+						:active-text='fieldSlot.field.options[0].displayValue' :readonly='fieldSlot.field.readonly'
+						v-model='fieldSlot.field.value' />
+				</c-field>
+				<c-field source='YesNoCheckboxSelectedValue' v-slot='fieldSlot' :cols='12'>
+					<c-input type='text' readonly v-model='fieldSlot.field.displayValue' />
+				</c-field>
+			</c-row>
+			<c-row>
+				<c-field source='YesNoToggle' v-slot='fieldSlot' :cols='12'>
+					<c-toggle :inactive-text='fieldSlot.field.options[1].displayValue'
+						:active-text='fieldSlot.field.options[0].displayValue' :readonly='fieldSlot.field.readonly'
+						v-model='fieldSlot.field.value' />
+				</c-field>
+				<c-field source='YesNoToggleSelectedValue' v-slot='fieldSlot' :cols='12'>
+					<c-input type='text' readonly v-model='fieldSlot.field.displayValue' />
+				</c-field>
+			</c-row>
+		</c-page>
+		<c-page ref='page3' @toggle='pageToggled' @entering='pageEntering' @entered='pageEntered'
+			:showNavigation='showNavigation' :visible='true'
+			:current='showAllPages || (pageNumber === 3 && !showConfirmation)' :number='3' next-button='Submit'
+			back-button='Back' title='Page 3'>
+			<c-row>
+				<c-section source='Section' v-slot='sectionSlot'>
+					<c-row>
+						<c-field source='ThisIsText' v-slot='fieldSlot' :cols='12'>
+							<c-input type='text' v-model='fieldSlot.field.displayValue'
+								:readonly='fieldSlot.field.readonly' />
+						</c-field>
+					</c-row>
+				</c-section>
+			</c-row>
+			<c-row>
+				<c-repeating-section source='RepeatingSection' item-heading='Thing' v-slot='list'>
+					<c-row>
+						<c-field source='RepeatingText' v-slot='fieldSlot' :cols='12'>
+							<c-input type='text' v-model='fieldSlot.field.displayValue'
+								:readonly='fieldSlot.field.readonly' />
+						</c-field>
+					</c-row>
+				</c-repeating-section>
+			</c-row>
+			<c-row>
+				<c-field source='ShowName' v-slot='fieldSlot' :hideLabel='!$source.readonly' :cols='12'>
+					<c-checkbox :label='fieldSlot.field.label' :inactive-text='fieldSlot.field.options[1].displayValue'
+						:active-text='fieldSlot.field.options[0].displayValue' :readonly='fieldSlot.field.readonly'
+						v-model='fieldSlot.field.value' />
+				</c-field>
+			</c-row>
+			<c-row>
+				<visible-transition>
+					<c-field source='Name' v-slot='fieldSlot' v-if='entity.Name_Visible'>
+						<c-name :name='fieldSlot.field.value' :readonly='fieldSlot.field.readonly'
+							properties='First,MiddleInitial,Last' />
+					</c-field>
+				</visible-transition>
+			</c-row>
+			<c-row>
+				<c-field source='ShowAddress' v-slot='fieldSlot' :cols='12'>
+					<c-radio-group :options='fieldSlot.field.options' :readonly='fieldSlot.field.readonly'
+						v-model='fieldSlot.field.displayValue' />
+				</c-field>
+			</c-row>
+			<c-row>
+				<visible-transition>
+					<c-field source='Address' v-slot='fieldSlot' v-if='entity.Address_Visible'>
+						<c-address :address='fieldSlot.field.value' :readonly='fieldSlot.field.readonly' type='us'
+							properties='Line1,Line2,City,State,PostalCode' :flags='flags' />
+					</c-field>
+				</visible-transition>
+			</c-row>
+		</c-page>
+	</div>
+	<c-page-navigation v-if='showNavigation && !showConfirmation' @next='navigate(true)' @back='navigate(false)'
+		@save='save' :next-text='nextButton' :back-text='backButton' :is-submission='onLastPage'
+		:form-status='submissionStatus' :allow-save='flags.AllowSaveAndResume' />
+	<c-abuse v-if='flags.abuse && !showConfirmation' />
+	<c-branding v-if='flags.branding' />
+</form>

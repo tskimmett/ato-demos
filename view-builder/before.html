@@ -1,0 +1,149 @@
+<span class='c-visible-container' sys:attach='toggle' toggle:onshowing='{{ Cognito.toggleAnimationShow }}'
+	toggle:onhiding='{{ Cognito.toggleAnimationHide }}' toggle:on='{binding RateYourSatisfactionWithVue_IsVisible}'
+	toggle:action='show'>
+	<div class='c-rating-scale c-field c-col-1 c-sml-col-1 c-span-24 c-sml-span-12 sys-template'
+		sys:class-c-required='{binding RateYourSatisfactionWithVue_IsRequired}' sys:attach='dataview'
+		dataview:data='{@ RateYourSatisfactionWithVue}'>
+		<legend class='c-label '>Rate your satisfaction with Vue</legend>
+		<div class='c-rating-scale-questions'>
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th class='c-choice-option-header'>Very Unsatisfied</th>
+						<th class='c-choice-option-header'>Unsatisfied</th>
+						<th class='c-choice-option-header'>Neutral</th>
+						<th class='c-choice-option-header'>Satisfied</th>
+						<th class='c-choice-option-header'>Very Satisfied</th>
+						<th class='c-choice-option-header'>N/A</th>
+					</tr>
+				</thead>
+				<tbody class='sys-template' sys:attach='dataview' dataview:data='{@ EaseOfUse}'>
+					<tr class='sys-template' sys:attach='dataview' dataview:data='{ binding options, mode=oneTime }'>
+						<th scope='row' class='c-choice-question' sys:if='{{ $index == 0 }}'>
+							{{ $context.parentContext.dataItem.get_label() }}</th>
+						<td class='c-choice-option'><label sys:for='{{ $id("c-4-")}}'><input sys:id='c-4-' type='radio'
+									sys:name="{{ $context.parentContext.getInstanceId('group') }}"
+									sys:checked='{ binding selected }' /><span><span class='c-offscreen'>{ binding
+										displayValue,
+										mode=oneTime }</span></span>
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td class='c-validation-row' colspan='7'>
+							<div class='c-validation'>{ binding firstError.message }
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				<tbody class='sys-template' sys:attach='dataview' dataview:data='{@ Documentation}'>
+					<tr class='sys-template' sys:attach='dataview' dataview:data='{ binding options, mode=oneTime }'>
+						<th scope='row' class='c-choice-question' sys:if='{{ $index == 0 }}'>
+							{{ $context.parentContext.dataItem.get_label() }}</th>
+						<td class='c-choice-option'>
+							<label sys:for='{{ $id("c-5-")}}'>
+								<input sys:id='c-5-' type='radio'
+									sys:name="{{ $context.parentContext.getInstanceId('group') }}"
+									sys:checked='{ binding selected }' /><span><span class='c-offscreen'>{ binding
+										displayValue,
+										mode=oneTime }</span></span>
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td class='c-validation-row' colspan='7'>
+							<div class='c-validation'>{ binding firstError.message }
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				<tbody class='sys-template' sys:attach='dataview' dataview:data='{@ Ecosystem}'>
+					<tr class='sys-template' sys:attach='dataview' dataview:data='{ binding options, mode=oneTime }'>
+						<th scope='row' class='c-choice-question' sys:if='{{ $index == 0 }}'>
+							{{ $context.parentContext.dataItem.get_label() }}</th>
+						<td class='c-choice-option'>
+							<label sys:for='{{ $id("c-6-")}}'>
+								<input sys:id='c-6-' type='radio'
+									sys:name="{{ $context.parentContext.getInstanceId('group') }}"
+									sys:checked='{ binding selected }' /><span><span class='c-offscreen'>{ binding
+										displayValue,
+										mode=oneTime }</span></span>
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td class='c-validation-row' colspan='7'>
+							<div class='c-validation'>{ binding firstError.message }
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				<tbody class='sys-template' sys:attach='dataview' dataview:data='{@ Performance}'>
+					<tr class='sys-template' sys:attach='dataview' dataview:data='{ binding options, mode=oneTime }'>
+						<th scope='row' class='c-choice-question' sys:if='{{ $index == 0 }}'>
+							{{ $context.parentContext.dataItem.get_label() }}</th>
+						<td class='c-choice-option'>
+							<label sys:for='{{ $id("c-7-")}}'>
+								<input sys:id='c-7-' type='radio'
+									sys:name="{{ $context.parentContext.getInstanceId('group') }}"
+									sys:checked='{ binding selected }' /><span><span class='c-offscreen'>{ binding
+										displayValue,
+										mode=oneTime }</span></span>
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td class='c-validation-row' colspan='7'>
+							<div class='c-validation'>{ binding firstError.message }
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				<tbody class='sys-template' sys:attach='dataview' dataview:data='{@ Flexibility}'>
+					<tr class='sys-template' sys:attach='dataview' dataview:data='{ binding options, mode=oneTime }'>
+						<th scope='row' class='c-choice-question' sys:if='{{ $index == 0 }}'>
+							{{ $context.parentContext.dataItem.get_label() }}</th>
+						<td class='c-choice-option'>
+							<label sys:for='{{ $id("c-8-")}}'>
+								<input sys:id='c-8-' type='radio'
+									sys:name="{{ $context.parentContext.getInstanceId('group') }}"
+									sys:checked='{ binding selected }' /><span><span class='c-offscreen'>{ binding
+										displayValue,
+										mode=oneTime }</span></span>
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td class='c-validation-row' colspan='7'>
+							<div class='c-validation'>{ binding firstError.message }
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				<tbody class='sys-template' sys:attach='dataview' dataview:data='{@ Testability}'>
+					<tr class='sys-template' sys:attach='dataview' dataview:data='{ binding options, mode=oneTime }'>
+						<th scope='row' class='c-choice-question' sys:if='{{ $index == 0 }}'>
+							{{ $context.parentContext.dataItem.get_label() }}</th>
+						<td class='c-choice-option'>
+							<label sys:for='{{ $id("c-9-")}}'>
+								<input sys:id='c-9-' type='radio'
+									sys:name="{{ $context.parentContext.getInstanceId('group') }}"
+									sys:checked='{ binding selected }' /><span><span class='c-offscreen'>{ binding
+										displayValue,
+										mode=oneTime }</span></span>
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td class='c-validation-row' colspan='7'>
+							<div class='c-validation'>{ binding firstError.message }
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class='c-validation'>{ binding firstError.message }</div>
+	</div>
+</span>
